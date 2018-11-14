@@ -1,0 +1,8 @@
+#!/bin/bash
+
+DB_DIR=$'/root/backups/'
+FILENAME=db_name-$(date +\%Y_\%m_\%d_\%H_\%M_\_%S).sql
+SQL_FILE=$DB_DIR$FILENAME
+mysqldump -u root -p'passwordhere' db_name > $SQL_FILE
+gdrive upload -r $SQL_FILE -p ID 
+echo "File saved as" $SQL_FILE
